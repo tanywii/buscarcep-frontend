@@ -6,18 +6,57 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container{
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 15px;
+      width: 90%;
+      height: 60%;
+    }
+    fieldset{
+      border: 3px;
+      background-image: linear-gradient(rgb(187, 219, 255), rgb(96, 181, 255));
+      padding: 15px;
+      border-radius: 15px;
+    }
+    legend{
+      border: 1px solid dodgerblue;
+      padding: 10px;
+      text-align: center;
+      color: aliceblue;
+      background-image: linear-gradient(rgb(29, 173, 230), rgb(80, 68, 255));
+      border-radius: 8px;
+    }
+    #submit{
+      background-image: linear-gradient(rgb(29, 173, 230), rgb(80, 68, 255));
+      width: 20%;
+      border: none;
+      padding: 15px;
+      color: rgb(255, 255, 255);
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Busca CEP</h1>
-    <h2>Digite seu CEP para obter seu endereço completo</h2>
-    <div class="form">
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" placeholder="Digite o CEP...">
-        <button onclick="buscarEndereco()">Buscar</button>
-    </div>
-  </div>
-  <div>
+    <form action="">
+      <fieldset>
+        <legend><b>BUSCA CEP</b></legend>
+        <br><br>
+        <div class="inputBox">
+          <label for="cep" class="labelInput">CEP</label>
+          <input type="text" id="cep" placeholder="Digite o CEP...">
+          <input type="submit" name="submit" id="submit">
+      </div>
+      </fieldset>
+    </form>
     <tabela></tabela>
   </div>
 </body>
