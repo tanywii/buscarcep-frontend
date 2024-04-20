@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 export interface Endereco {
   cep: string;
@@ -16,9 +16,6 @@ export interface Endereco {
 
 const ELEMENT_DATA: Endereco[] = [];
 
-/**
- * @title Basic use of <table mat-table>
- */
 @Component({
   selector: 'tabela',
   styleUrl: 'tabela.component.css',
@@ -26,25 +23,26 @@ const ELEMENT_DATA: Endereco[] = [];
   standalone: true,
   imports: [MatTableModule, MatSortModule],
 })
-export class Tabela implements OnInit{
+
+export class Tabela implements OnInit {
+  
+  constructor(private http: HttpClient, private _liveAnnouncer: LiveAnnouncer) { }
   displayedColumns: string[] = ['cep', 'logradouro', 'cidade', 'bairro', 'uf', 'complemento', 'dataHoraConsulta'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  
+
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
+
+  ngOnInit() {
+    this.http.get<any>('http://localhost:8080/cep/listar-todos').subscribe(data => {
+      this.dataSource.data = data;
+    })
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private http: HttpClient, private _liveAnnouncer: LiveAnnouncer) { }
-
-  ngOnInit() {      
-      this.http.get<any>('http://localhost:8080/cep/listar-todos').subscribe(data => {
-        this.dataSource.data = data;
-      })
-  }
-  
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce('');
