@@ -1,53 +1,66 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8">
+
     <!-- Position Column -->
     <ng-container matColumnDef="cep">
-      <th mat-header-cell *matHeaderCellDef> CEP </th>
-      <td mat-cell *matCellDef="let element"> {{element.cep}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+            CEP
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.cep}} </td>
     </ng-container>
-  
+
     <!-- Name Column -->
     <ng-container matColumnDef="logradouro">
-      <th mat-header-cell *matHeaderCellDef> Logradouro </th>
-      <td mat-cell *matCellDef="let element"> {{element.logradouro}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+            Logradouro
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.logradouro}} </td>
     </ng-container>
-  
+
     <!-- Weight Column -->
     <ng-container matColumnDef="cidade">
-      <th mat-header-cell *matHeaderCellDef> Cidade </th>
-      <td mat-cell *matCellDef="let element"> {{element.cidade}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+            Cidade
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.cidade}} </td>
     </ng-container>
-  
+
     <!-- Symbol Column -->
     <ng-container matColumnDef="bairro">
-      <th mat-header-cell *matHeaderCellDef> Bairro </th>
-      <td mat-cell *matCellDef="let element"> {{element.bairro}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+            Bairro
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.bairro}} </td>
     </ng-container>
 
+    <!-- Symbol Column -->
     <ng-container matColumnDef="uf">
-      <th mat-header-cell *matHeaderCellDef> Uf </th>
-      <td mat-cell *matCellDef="let element"> {{element.uf}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+            Uf
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.uf}} </td>
     </ng-container>
 
+
+    <!-- Symbol Column -->
     <ng-container matColumnDef="complemento">
-      <th mat-header-cell *matHeaderCellDef> Complemento </th>
-      <td mat-cell *matCellDef="let element"> {{element.complemento}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+            Complemento
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.complemento}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="data_hora_consulta">
-      <th mat-header-cell *matHeaderCellDef> Data Consulta </th>
-      <td mat-cell *matCellDef="let element"> {{element.data_hora_consulta}} </td>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dataHoraConsulta">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+            dataHoraConsulta
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.dataHoraConsulta}} </td>
     </ng-container>
-  
+
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  
-  
-  <!-- Copyright 2024 Google LLC. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at https://angular.io/license -->
+</table>

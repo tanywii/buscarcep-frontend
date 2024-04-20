@@ -1,20 +1,20 @@
-import {Component} from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 
-export interface PeriodicElement {
+export interface Endereco {
   cep: string;
   logradouro: string;
   cidade: string;
   bairro: string;
   uf: string;
   complemento: string;
-  data_hora_consulta: string;
+  dataHoraConsulta: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    cep: "89211465", logradouro: '123', cidade: "joinville", bairro: "Floresta", uf: "SC", complemento: "AP", data_hora_consulta: "000"}
- ];
+const ELEMENT_DATA: Endereco[] = [];
 
 /**
  * @title Basic use of <table mat-table>
@@ -24,14 +24,33 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: 'tabela.component.css',
   templateUrl: 'tabela.component.html',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatSortModule],
 })
-export class Tabela {
-  displayedColumns: string[] = ['cep', 'logradouro', 'cidade', 'bairro', 'uf', 'complemento', 'data_hora_consulta'];
-  dataSource = ELEMENT_DATA;
+export class Tabela implements OnInit{
+  displayedColumns: string[] = ['cep', 'logradouro', 'cidade', 'bairro', 'uf', 'complemento', 'dataHoraConsulta'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
+  constructor(private http: HttpClient, private _liveAnnouncer: LiveAnnouncer) { }
+
+  ngOnInit() {      
+      this.http.get<any>('http://localhost:8080/cep/listar-todos').subscribe(data => {
+        this.dataSource.data = data;
+      })
+  }
+  
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce('');
+    } else {
+      this._liveAnnouncer.announce('');
+    }
+  }
+
 }
-
-
-/**  Copyright 2024 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at https://angular.io/license */
