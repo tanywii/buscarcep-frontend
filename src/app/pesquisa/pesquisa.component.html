@@ -1,11 +1,16 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <fieldset>
-        <legend><b>BUSCA CEP</b></legend>
-        <br><br>
-        <div class="inputBox">
-            <label for="cep" class="labelInput">CEP</label>
-            <input type="text" formControlName="cep" placeholder="Digite o CEP...">
-            <input type="submit" name="submit" id="submit" >
-        </div>
-    </fieldset>
-</form>
+<div class="container">
+    <div class="header">
+        <h1>BUSCA CEP</h1>
+    </div>
+    <div class="form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <fieldset>
+                <legend>Informe o CEP</legend>
+                <div class="inputBox">
+                    <input type="text" formControlName="cep" placeholder="Digite o CEP...">
+                    <button type="submit">Buscar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
