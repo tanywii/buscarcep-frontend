@@ -1,27 +1,45 @@
-# BuscarCep
+READ ME 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+O projeto foi dividido em duas partes : frontend e backend.
+O frontend foi desenvolvido em Angular
+O backend foi desenvolvido em Java
 
-## Development server
+Repositório backend: https://github.com/tanywii/buscarcep-backend
+Repositório frontend: https://github.com/tanywii/buscarcep-frontend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Será necessário ter instalado :
+XAMPP
+Workbench Mysql
+Java (JDK) versão 11
+Maven
+NPM
+Angular
+Git
+Visual studio code
+Eclipse/Intellij/Spring tools suite (ou qualquer uma de sua preferencia)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Como rodar o projeto 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Rode o XAMPP para o mysql (porta 3306)
+2. Inicie o workbench, configure um host 127.0.0.1 com porta 3306, usuario root e senha vazia, e aí rode os seguintes scripts : 
+create database db;
+use db;
+CREATE TABLE endereco (
+    id INT PRIMARY KEY,
+    cep VARCHAR(9),
+    logradouro VARCHAR(255),
+    cidade VARCHAR(255),
+    bairro VARCHAR(255),
+    uf VARCHAR(2),
+    complemento VARCHAR(255),
+    data_hora_consulta timestamp
+);
 
-## Running unit tests
+3. Importar o projeto backend na sua IDE, rodar como projeto spring boot
+4. Importar o projeto frontend no Visual Studio Code, abrir um terminal e rodar os seguintes comandos (em ordem) : 
+npm install
+ng serve
+5. Acessar no navegador com o seguinte endereço  : http://localhost:4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
