@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+// pesquisa.component.ts  -  QUANDO O FORMULARIO É ENVIADO CHAMA A API (consulta_e_salvar_endereco)
 @Component({
   selector: 'pesquisa',
   standalone: true,
