@@ -39,6 +39,8 @@ export class Tabela implements OnInit {
     })
   }
 
+  // É O MÉTODO QUE FAZ A ORDENACAO (QUANDO VC CLICA ELE COLOCA AS COISAS EM ORDEM ALFABETICA ETC...) 
+  // ----------------------------------------
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
@@ -50,5 +52,5 @@ export class Tabela implements OnInit {
       this._liveAnnouncer.announce('');
     }
   }
-
+// -------------------------------------------
 }
