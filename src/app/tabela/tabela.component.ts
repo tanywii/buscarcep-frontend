@@ -4,6 +4,8 @@ import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
+
+// CHAMA A API NO BACKEND PARA PEGAR OS DADOS CONSULTADO
 export interface Endereco {
   cep: string;
   logradouro: string;
